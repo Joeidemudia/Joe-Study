@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .countdown-container {
+            margin-top: 20%;
+            font-size: 2rem;
+            color: #333;
+        }
+        .time {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="countdown-container">
+        <h1>Countdown to 2025</h1>
+        <div class="time" id="countdown"></div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("January 1, 2025 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const x = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the countdown date
+            const distance = countDownDate - now;
+
+            // Time calculations for hours and minutes
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = hours + "h " + minutes + "m ";
+
+            // If the countdown is over, display some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
